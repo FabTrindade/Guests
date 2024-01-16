@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_all_guests"
-        android:name="com.fabscorp.guests.ui.home.AllGuestsFragment"
-        android:label="Todos os convidados"
+        android:name="com.fabscorp.guests.ui.AllGuestsFragment"
+        android:label="@string/menu_all_guests"
         tools:layout="@layout/fragment_all_guests" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.fabscorp.guests.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_present"
+        android:name="com.fabscorp.guests.ui.PresentFragment"
+        android:label="@string/menu_present"
+        tools:layout="Present" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.fabscorp.guests.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_absent"
+        android:name="com.fabscorp.guests.ui.AbsentFragment"
+        android:label="@string/menu_absent"
+        tools:layout="@layout/fragment_absent" />
 </navigation>

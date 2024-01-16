@@ -1,4 +1,4 @@
-package com.fabscorp.guests.ui.home
+package com.fabscorp.guests.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
