@@ -4,6 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GuestFormActivity">
+    tools:context=".GuestFormActivity"
+    android:layout_margin="16dp">
+
+    <TextView
+        android:id="@+id/text_mame"
+        android:text="Nome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/edit_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_mame"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"/>
+
+    <TextView
+        android:id="@+id/text_present"
+        android:text="Presença"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/edit_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
+   <RadioGroup
+       android:id="@+id/radio_group_presents"
+       app:layout_constraintTop_toBottomOf="@id/text_present"
+       app:layout_constraintStart_toStartOf="parent"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content">
+
+       <RadioButton
+           android:id="@+id/radio_present"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@id/text_present"
+           android:text="Presente"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"/>
+
+       <RadioButton
+           android:id="@+id/radio_absent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@id/radio_present"
+           android:text="Ausente"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"/>
+
+   </RadioGroup>
+
+    <Button
+        android:id="@+id/button_save"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radio_group_presents"
+        android:text="Salvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
