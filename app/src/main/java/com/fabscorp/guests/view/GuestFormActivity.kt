@@ -1,11 +1,12 @@
-package com.fabscorp.guests
+package com.fabscorp.guests.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.ActionBar
 import androidx.lifecycle.ViewModelProvider
+import com.fabscorp.guests.R
 import com.fabscorp.guests.databinding.ActivityGuestFormBinding
+import com.fabscorp.guests.viewmodel.GuestFormViewModel
 
 class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityGuestFormBinding

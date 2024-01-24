@@ -1,4 +1,4 @@
-package com.fabscorp.guests.ui
+package com.fabscorp.guests.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.fabscorp.guests.databinding.FragmentAbsentBinding
+import com.fabscorp.guests.viewmodel.AbsentViewModel
 
 class AbsentFragment : Fragment() {
 
