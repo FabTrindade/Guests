@@ -13,6 +13,10 @@ class GuestDataBase(context: Context,) : SQLiteOpenHelper(context, NAME, null, V
 
     override fun onCreate(db: SQLiteDatabase) {
         // Data Base Create
+        db.execSQL("CREATE TABLE Guest (" +
+                "id integer primary key autoincrement," +
+                "name tex," +
+                "presence integer);")
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
