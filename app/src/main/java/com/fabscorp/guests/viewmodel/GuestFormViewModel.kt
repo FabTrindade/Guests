@@ -10,6 +10,6 @@ class GuestFormViewModel(application: Application) : AndroidViewModel(applicatio
     private val repository = GuestRepository.getInstance(application)
 
     fun insert (guestModel: GuestModel){
-
+        repository.insert(guestModel)
     }
 }
