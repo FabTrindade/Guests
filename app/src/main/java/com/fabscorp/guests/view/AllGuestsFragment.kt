@@ -4,10 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.fabscorp.guests.databinding.FragmentAllGuestsBinding
+import com.fabscorp.guests.view.adapter.GuestsAdapter
 import com.fabscorp.guests.viewmodel.AllGuestViewModel
 
 class AllGuestsFragment : Fragment() {
@@ -19,20 +23,22 @@ class AllGuestsFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var viewModel: AllGuestViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        viewModel = ViewModelProvider(this).get(AllGuestViewModel::class.java)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, b: Bundle?): View {
 
+        viewModel = ViewModelProvider(this).get(AllGuestViewModel::class.java)
         _binding = FragmentAllGuestsBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+
+        //Recycler view layout
+        binding.recyclerAllGuests.layoutManager = LinearLayoutManager(context)
+
+        //Recycler view adapter
+        binding.recyclerAllGuests.adapter = GuestsAdapter()
 
         viewModel.getAll()
+
         observe()
 
-        return root
+        return binding.root
     }
 
     private fun observe() {
