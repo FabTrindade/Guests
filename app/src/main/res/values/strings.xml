@@ -10,4 +10,9 @@
     <string name="menu_all_guests">Todos os convidados</string>
     <string name="menu_present">Presentes</string>
     <string name="menu_absent">Ausentes</string>
+    <string name="guest_remove_alert">Alerta de remoção de Convidado</string>
+    <string name="guest_remove">Tem cereteza que deseja remover convidado?</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+    <string name="op_cancelled">Operação Canelada!</string>
 </resources>
