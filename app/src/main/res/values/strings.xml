@@ -14,5 +14,8 @@
     <string name="guest_remove">Tem cereteza que deseja remover convidado?</string>
     <string name="yes">Sim</string>
     <string name="no">Não</string>
-    <string name="op_cancelled">Operação Canelada!</string>
+    <string name="op_cancelled">Operação canelada!</string>
+    <string name="op_fail">Operação falou!</string>
+    <string name="updateSuccess">Atualização com sucesso!</string>
+    <string name="insertSuccess">Inserção com sucesso!</string>
 </resources>
