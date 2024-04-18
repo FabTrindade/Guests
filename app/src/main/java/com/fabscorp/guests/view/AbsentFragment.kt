@@ -1,41 +1,66 @@
 package com.fabscorp.guests.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.fabscorp.guests.constants.DataBaseConstants
 import com.fabscorp.guests.databinding.FragmentAbsentBinding
-import com.fabscorp.guests.viewmodel.AbsentViewModel
+import com.fabscorp.guests.view.adapter.GuestsAdapter
+import com.fabscorp.guests.view.listener.OnGuestListener
+import com.fabscorp.guests.viewmodel.GuestViewModel
 
 class AbsentFragment : Fragment() {
 
     private var _binding: FragmentAbsentBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var viewModel: GuestViewModel
+    private val adapter = GuestsAdapter()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val viewModel =
-            ViewModelProvider(this).get(AbsentViewModel::class.java)
-
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, b: Bundle?): View {
+        viewModel= ViewModelProvider(this).get(GuestViewModel::class.java)
         _binding = FragmentAbsentBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        val textView: TextView = binding.textSlideshow
-        viewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        //Recycler view layout
+        binding.recyclerGuests.layoutManager = LinearLayoutManager(context)
+
+        //Recycler view adapter
+        binding.recyclerGuests.adapter = adapter
+
+        //Recycler click listener
+        val listener = object : OnGuestListener {
+            override fun onClick(id: Int) {
+                val intent = Intent(context, GuestFormActivity::class.java)
+                val bundle = Bundle()
+                bundle.putInt(DataBaseConstants.GUEST.ID, id)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            }
+
+            override fun onDelete(id: Int) {
+                viewModel.deleteGuestById(id)
+                viewModel.getAbsent()
+            }
         }
-        return root
-    }
 
+        adapter.attachListener(listener)
+        observe()
+
+        return binding.root
+    }
+    override fun onResume() {
+        super.onResume()
+        viewModel.getAbsent()
+    }
+    private fun observe() {
+        viewModel.guests.observe(viewLifecycleOwner) {
+            adapter.updateGuests(it)
+        }
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

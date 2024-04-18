@@ -4,11 +4,10 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.fabscorp.guests.model.GuestModel
 import com.fabscorp.guests.repository.GuestRepository
 
-class AllGuestViewModel(application: Application) : AndroidViewModel(application) {
+class GuestViewModel(application: Application) : AndroidViewModel(application) {
 
     private var repo = GuestRepository.getInstance(application.applicationContext)
     private val listAllGuests = MutableLiveData<List<GuestModel>>()
@@ -20,5 +19,12 @@ class AllGuestViewModel(application: Application) : AndroidViewModel(application
 
     fun deleteGuestById(id: Int) {
         repo.delete(id)
+    }
+
+    fun getPresent() {
+        listAllGuests.value = repo.getPresent()
+    }
+    fun getAbsent() {
+        listAllGuests.value = repo.getAbsent()
     }
 }
