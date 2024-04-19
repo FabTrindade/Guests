@@ -14,6 +14,8 @@ import com.fabscorp.guests.model.GuestModel
 @Database (entities = [GuestModel::class], version = 1)
 abstract class GuestDataBase : RoomDatabase() {
 
+    abstract fun guestDAO(): GuestDAO
+
     //Singleton
     companion object {
         private lateinit var INSTANCE: GuestDataBase
